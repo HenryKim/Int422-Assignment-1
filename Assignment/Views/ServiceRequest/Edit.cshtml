@@ -1,0 +1,99 @@
+﻿@model Assignment.ViewModels.ServiceRequestEdit
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>ServiceRequestEdit</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        <div class="form-group">
+            @Html.LabelFor(model => model.StudentNumber, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.StudentNumber, new { @readonly = "readonly" })
+                @Html.ValidationMessageFor(model => model.StudentNumber)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ProgramId, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ProgramId, new { @readonly = "readonly" })
+                @Html.ValidationMessageFor(model => model.ProgramId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Title, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Title)
+                @Html.ValidationMessageFor(model => model.Title)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <script src="/Scripts/ckeditor/ckeditor.js"></script>
+                @using (Html.BeginForm())
+                {
+                    <textarea name="Description">@ViewBag.Content</textarea>
+                    // Note the optional use of "startupFocus"
+                    <script>CKEDITOR.replace('Description', { startupFocus: true });</script>
+                }
+                @Html.ValidationMessageFor(model => model.Description)
+            </div>
+        </div>
+
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DateUpdate, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DateUpdate)
+                @Html.ValidationMessageFor(model => model.DateUpdate)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.status, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.status)
+                @Html.ValidationMessageFor(model => model.status)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.priority, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.priority)
+                @Html.ValidationMessageFor(model => model.priority)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.note, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.note)
+                @Html.ValidationMessageFor(model => model.note)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
